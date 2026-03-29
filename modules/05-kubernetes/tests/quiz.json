@@ -1,0 +1,68 @@
+[
+  {
+    "question": "What is the key difference between a Pod and a Deployment in Kubernetes?",
+    "options": [
+      "A Pod is the smallest deployable unit, while a Deployment manages Pods and provides scaling, rolling updates, and desired state management",
+      "Deployments can only run Docker containers, while Pods can run any container runtime",
+      "Pods are used for stateless applications, Deployments are only for stateful applications",
+      "There is no difference; they are interchangeable terms"
+    ],
+    "answer": 0,
+    "explanation": "Pods are the atomic unit in Kubernetes. Deployments are controllers that manage Pods by ensuring the desired number of replicas are running, handling rolling updates, and managing rollbacks."
+  },
+  {
+    "question": "What are the three main types of Kubernetes Services and their purposes?",
+    "options": [
+      "ClusterIP (internal only), NodePort (host-level access), LoadBalancer (external cloud load balancer)",
+      "ClusterIP (databases only), NodePort (web apps only), LoadBalancer (all traffic)",
+      "Frontend, Backend, Database services",
+      "HTTP, HTTPS, and SSH services"
+    ],
+    "answer": 0,
+    "explanation": "ClusterIP provides internal-only networking for Pod-to-Pod communication. NodePort exposes the service on a static port on each node. LoadBalancer creates an external load balancer (cloud provider dependent) for external traffic."
+  },
+  {
+    "question": "When would you use a ConfigMap versus a Secret in Kubernetes?",
+    "options": [
+      "ConfigMap for large amounts of data, Secret for small amounts of data",
+      "ConfigMap for non-sensitive configuration (environment variables, config files), Secret for sensitive data (passwords, tokens, certificates)",
+      "ConfigMap for Pods, Secret for Deployments",
+      "They serve the same purpose; choose based on personal preference"
+    ],
+    "answer": 1,
+    "explanation": "ConfigMaps are for non-secret configuration data. Secrets are for sensitive information and are stored separately with base64 encoding (ideally encrypted at rest). Both decouple configuration from application code."
+  },
+  {
+    "question": "What is a Persistent Volume (PV) and Persistent Volume Claim (PVC) used for?",
+    "options": [
+      "PVs store container images, PVCs pull images from registries",
+      "PV is cluster-level storage; PVC is a request for storage by a Pod. This abstraction decouples storage from infrastructure",
+      "PVs are used for Deployments, PVCs are used for StatefulSets only",
+      "They manage network traffic and load balancing"
+    ],
+    "answer": 1,
+    "explanation": "PVs are cluster-level storage resources provisioned by administrators. PVCs are requests for storage that bind to available PVs. This allows Pods to request storage without knowing infrastructure details."
+  },
+  {
+    "question": "What is the purpose of Kubernetes Namespaces?",
+    "options": [
+      "Namespaces organize container images in the Docker registry",
+      "Namespaces provide logical cluster partitioning, resource isolation, network policies, and multi-tenancy",
+      "Namespaces are used to define Kubernetes object names only",
+      "Namespaces are only used for database schema organization"
+    ],
+    "answer": 1,
+    "explanation": "Namespaces are virtual clusters within a physical Kubernetes cluster. They enable resource quotas, network policies, RBAC, and logical isolation for different teams or environments."
+  },
+  {
+    "question": "How does kubectl communicate with the Kubernetes cluster?",
+    "options": [
+      "kubectl directly modifies the container runtime on each node",
+      "kubectl connects to the API server and sends requests to control Kubernetes resources",
+      "kubectl bypasses the API server and directly modifies etcd (the database)",
+      "kubectl is only used for local development and cannot interact with remote clusters"
+    ],
+    "answer": 1,
+    "explanation": "kubectl is the command-line tool that communicates with the Kubernetes API server. The API server handles validation and persistence of resource definitions. kubectl can manage local or remote clusters via kubeconfig."
+  }
+]

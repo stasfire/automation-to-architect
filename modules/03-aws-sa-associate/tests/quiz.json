@@ -1,0 +1,90 @@
+[
+  {
+    "question": "Which AWS Well-Architected Framework pillar focuses on automating responses to system failures and using monitoring to detect issues?",
+    "options": [
+      "Cost Optimization - reducing unnecessary spending",
+      "Operational Excellence - running and monitoring systems to maximize business value",
+      "Reliability - ability to recover from failures and meet demand",
+      "Performance Efficiency - using resources effectively"
+    ],
+    "answer": 1,
+    "explanation": "Operational Excellence includes automation, monitoring, and incident response. It ensures systems run smoothly and issues are detected and resolved quickly with minimal manual intervention."
+  },
+  {
+    "question": "What is the key difference between RDS Multi-AZ and RDS Read Replicas?",
+    "options": [
+      "Multi-AZ synchronously replicates to a standby for failover; Read Replicas asynchronously replicate for scaling read workloads",
+      "Multi-AZ increases read capacity; Read Replicas provide automatic backup",
+      "Read Replicas are only for MySQL; Multi-AZ works for all database engines",
+      "Both provide identical functionality but Multi-AZ is cheaper"
+    ],
+    "answer": 0,
+    "explanation": "Multi-AZ provides high availability through synchronous failover. Read Replicas provide scaling for read operations with asynchronous replication, and can be in different regions for disaster recovery."
+  },
+  {
+    "question": "In Amazon S3, how is data consistency handled after a PUT operation?",
+    "options": [
+      "Data is eventually consistent; readers may see old data temporarily",
+      "Data is immediately consistent; PUT requests are readable right away",
+      "Data consistency depends on the storage class selected",
+      "S3 does not provide consistency guarantees for PUT operations"
+    ],
+    "answer": 1,
+    "explanation": "S3 provides strong consistency for all operations including PUT. After a successful PUT, all subsequent GET requests immediately return the new data."
+  },
+  {
+    "question": "What does Lambda concurrency refer to, and how does reserved concurrency work?",
+    "options": [
+      "The number of Lambda invocations per second; reserved concurrency increases this limit",
+      "The number of simultaneous function executions; reserved concurrency guarantees a specific amount is available for your function",
+      "The memory allocated to Lambda functions; reserved concurrency optimizes memory usage",
+      "The number of Lambda versions you can create; reserved concurrency allows unlimited versions"
+    ],
+    "answer": 1,
+    "explanation": "Lambda concurrency is the number of function instances executing simultaneously. Reserved concurrency guarantees a portion of your account's concurrency is dedicated to a specific function, preventing throttling."
+  },
+  {
+    "question": "Which load balancer should you use for an ultra-high-performance gaming server requiring sub-millisecond latency?",
+    "options": [
+      "Application Load Balancer (ALB) - designed for web applications",
+      "Network Load Balancer (NLB) - operates at Layer 4 with extreme performance",
+      "Classic Load Balancer (CLB) - legacy option for HTTP/HTTPS",
+      "Gateway Load Balancer (GWLB) - for third-party appliances"
+    ],
+    "answer": 1,
+    "explanation": "NLB operates at Layer 4 (TCP/UDP) and handles millions of requests per second with ultra-low latency. ALB is Layer 7 and better for web applications; CLB is legacy."
+  },
+  {
+    "question": "Which Route 53 routing policy should you use to direct traffic to the AWS region with the lowest latency for the client?",
+    "options": [
+      "Simple routing - single resource per policy",
+      "Weighted routing - distribute traffic by percentage",
+      "Latency-based routing - route to lowest latency region",
+      "Failover routing - active-passive configuration"
+    ],
+    "answer": 2,
+    "explanation": "Latency-based routing measures client latency to each region and routes requests to the region with the best performance. Ideal for global applications requiring optimized user experience."
+  },
+  {
+    "question": "What is the primary use case for ElastiCache in a typical web application architecture?",
+    "options": [
+      "Replacing the primary database with a faster alternative",
+      "Storing encrypted session data and frequently accessed data in memory to reduce database load",
+      "Providing automatic backups of application data",
+      "Replacing API Gateway for request routing"
+    ],
+    "answer": 1,
+    "explanation": "ElastiCache (Redis/Memcached) caches frequently accessed data and sessions in memory. This reduces database load, decreases latency for repeated queries, and improves application performance."
+  },
+  {
+    "question": "Which strategy best represents cost optimization in AWS?",
+    "options": [
+      "Always use the most powerful instances available",
+      "Right-size instances based on actual usage, use Reserved Instances for predictable workloads, implement S3 lifecycle policies, and choose appropriate storage classes",
+      "Never use auto-scaling to keep costs predictable",
+      "Store all data in S3 Standard regardless of access patterns"
+    ],
+    "answer": 1,
+    "explanation": "Cost optimization requires matching resource size to actual needs, using Reserved Instances for long-term workloads, implementing lifecycle policies to move infrequently accessed data to cheaper storage, and regular cost analysis."
+  }
+]

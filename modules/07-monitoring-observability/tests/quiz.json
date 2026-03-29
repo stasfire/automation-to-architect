@@ -1,0 +1,90 @@
+[
+  {
+    "question": "What are the three pillars of observability?",
+    "options": [
+      "Metrics, logs, and traces",
+      "Performance, availability, and security",
+      "Dashboards, alerts, and dashboards",
+      "Prometheus, Grafana, and Elasticsearch"
+    ],
+    "answer": 0,
+    "explanation": "Metrics (quantitative data), logs (events with context), and traces (request flow) together provide complete system visibility. The other options are tools or outcomes, not the foundational pillars."
+  },
+  {
+    "question": "How does Prometheus collect metrics from applications?",
+    "options": [
+      "Applications push metrics to Prometheus using the Pushgateway",
+      "Prometheus pulls (scrapes) metrics from application endpoints on a schedule",
+      "Prometheus queries a central database for all metrics",
+      "Applications send metrics via syslog to Prometheus"
+    ],
+    "answer": 1,
+    "explanation": "Prometheus uses a pull model where it scrapes targets (applications) at intervals defined in the config. This decouples the monitoring system from the application code and gives Prometheus control over collection frequency."
+  },
+  {
+    "question": "What is the correct relationship between SLI, SLO, and SLA?",
+    "options": [
+      "SLI is what you measure, SLO is your target, SLA is the contract",
+      "SLA is what you measure, SLO is the contract, SLI is the target",
+      "SLO and SLA are the same thing; SLI is how you measure them",
+      "All three are interchangeable terms for the same concept"
+    ],
+    "answer": 0,
+    "explanation": "SLI (Service Level Indicator) is the metric you track. SLO (Service Level Objective) is the target you set (e.g., 99.9%). SLA (Service Level Agreement) is the contractual commitment with business consequences for missing the SLO."
+  },
+  {
+    "question": "Which of the following is a best practice for alerting?",
+    "options": [
+      "Alert on every spike in CPU usage, even if brief and self-recovering",
+      "Alert only on outcomes (SLOs missed) rather than raw threshold violations",
+      "Send all alerts to a general team email with no prioritization",
+      "Set very loose thresholds to avoid 'noise' from alerts"
+    ],
+    "answer": 1,
+    "explanation": "Effective alerting focuses on outcomes (user impact) rather than raw metrics. Alert fatigue from noise makes alerts ignored. Use proper thresholds, alert grouping, and routing to on-call teams for better incident response."
+  },
+  {
+    "question": "What is the main advantage of structured logging (JSON/key-value format)?",
+    "options": [
+      "It reduces disk space usage compared to plain text logs",
+      "It makes logs easier to parse, search, and correlate across services",
+      "It eliminates the need for a centralized log aggregation system",
+      "It automatically prevents security breaches"
+    ],
+    "answer": 1,
+    "explanation": "Structured logs with consistent fields (request ID, service name, user ID) enable powerful querying and correlation across services. Log aggregation systems like ELK or Splunk can parse and search structured logs efficiently."
+  },
+  {
+    "question": "In Prometheus, what does the query rate(http_requests_total[5m]) calculate?",
+    "options": [
+      "The total number of HTTP requests in the last 5 minutes",
+      "The average response rate of HTTP requests",
+      "The per-second rate of increase in the http_requests_total counter over 5 minutes",
+      "The 5-minute percentile of request latency"
+    ],
+    "answer": 2,
+    "explanation": "rate() calculates the per-second rate of change over the specified time window. rate(http_requests_total[5m]) gives requests per second, which is useful for detecting traffic spikes or drops."
+  },
+  {
+    "question": "What is a key difference between Prometheus and traditional log aggregation systems like ELK?",
+    "options": [
+      "Prometheus stores raw text logs; ELK stores metrics",
+      "Prometheus is for metrics (time-series data); ELK is for logs (unstructured text)",
+      "Prometheus requires push-based collection; ELK only supports pull",
+      "Prometheus is free; ELK requires a commercial license"
+    ],
+    "answer": 1,
+    "explanation": "Prometheus specializes in metrics (time-series data with labels). ELK (Elasticsearch, Logstash, Kibana) specializes in logs (events with context). Both are needed for complete observability."
+  },
+  {
+    "question": "What should a runbook associated with an alert include?",
+    "options": [
+      "Only the threshold that triggered the alert",
+      "The on-call engineer's personal contact information",
+      "Steps to diagnose the issue, potential causes, and mitigation actions",
+      "A list of all metrics in the system for reference"
+    ],
+    "answer": 2,
+    "explanation": "A runbook is an operational playbook that helps engineers quickly diagnose and resolve the issue when an alert fires. It should include diagnostic steps, common causes, and remediation actions."
+  }
+]

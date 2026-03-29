@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What does the 'R' in the STAR method represent?",
+    "options": [
+      "Role: your position in the situation",
+      "Reaction: how you felt about the outcome",
+      "Result: the measurable outcome and lessons learned",
+      "Retrospective: what you would do differently"
+    ],
+    "answer": 2,
+    "explanation": "STAR stands for Situation, Task, Action, and Result. The Result is crucial—interviewers want quantifiable outcomes (e.g., reduced latency 40%, shipped faster, team learned X) and what you learned for the future."
+  },
+  {
+    "question": "When answering a system design question in an interview, what should you do first?",
+    "options": [
+      "Immediately start drawing architecture diagrams",
+      "Ask clarifying questions and understand requirements before designing",
+      "List all technologies you know (databases, caches, message queues)",
+      "Assume high scale and design for 1 billion users"
+    ],
+    "answer": 1,
+    "explanation": "Clarifying requirements first shows maturity. Ask: Who are the users? What's the scale? What are latency/consistency/cost goals? This prevents designing the wrong system and demonstrates collaborative problem-solving."
+  },
+  {
+    "question": "How should you handle a 'I don't know' moment in an architecture interview?",
+    "options": [
+      "Admit you don't know and stop talking; move on to the next topic",
+      "Acknowledge honestly, apply related knowledge, ask for guidance, and continue problem-solving",
+      "Guess or bluff your way through; admitting gaps looks bad",
+      "Ask the interviewer to explain it to you in detail"
+    ],
+    "answer": 1,
+    "explanation": "Interviewers respect honesty and problem-solving over fake expertise. Say 'I don't have deep experience, but I'd approach it like [similar problem]' or 'Could you point me in the right direction?' Then keep designing."
+  },
+  {
+    "question": "What should you prioritize when negotiating after receiving a job offer?",
+    "options": [
+      "Negotiate salary only; other benefits are less important",
+      "Accept immediately without negotiating to show eagerness",
+      "Negotiate salary, equity, title, signing bonus, and benefits as a package",
+      "Ask for the highest possible salary regardless of company budget"
+    ],
+    "answer": 2,
+    "explanation": "Treat negotiation as a package deal. Salary is one lever; equity, title, signing bonus, benefits, and start date are others. Research market rates first (Levels.fyi, Blind) and anchor reasonably (15-20% above target)."
+  },
+  {
+    "question": "When presenting a portfolio project to a hiring manager, what is most important to emphasize?",
+    "options": [
+      "The technologies and tools you used",
+      "The problem it solved, your architectural decisions, and the measurable impact",
+      "How complex the code is and how many hours you spent",
+      "How similar it is to the job you're applying for"
+    ],
+    "answer": 1,
+    "explanation": "Hiring managers care about your decision-making, impact, and ability to articulate trade-offs. A 3-5 minute pitch should cover: problem, your role, key architectural decisions, and outcomes (latency improvements, scale achieved, cost saved)."
+  }
+]

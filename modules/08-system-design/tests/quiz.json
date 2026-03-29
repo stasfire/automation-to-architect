@@ -1,0 +1,90 @@
+[
+  {
+    "question": "According to the CAP theorem, which two properties can a distributed system guarantee during a network partition?",
+    "options": [
+      "Consistency and Availability",
+      "Consistency and Partition tolerance",
+      "Availability and Partition tolerance",
+      "All three: Consistency, Availability, and Partition tolerance"
+    ],
+    "answer": 2,
+    "explanation": "The CAP theorem states you can only guarantee two of three properties. During a partition, you must choose between consistency (returning stale data) or availability (rejecting requests). Modern systems often choose AP (availability + partition tolerance) and aim for eventual consistency."
+  },
+  {
+    "question": "What is the primary difference between database sharding and replication?",
+    "options": [
+      "Sharding improves availability; replication improves write performance",
+      "Sharding distributes data horizontally for write scaling; replication copies data for read scaling and redundancy",
+      "Sharding is for NoSQL databases; replication is for SQL databases",
+      "Both are the same technique with different names"
+    ],
+    "answer": 1,
+    "explanation": "Sharding partitions data across multiple databases (e.g., by user ID), enabling horizontal write scaling. Replication copies data to multiple nodes for redundancy and read scaling. Both can be used together."
+  },
+  {
+    "question": "In a write-through caching strategy, when data is written, where does it go?",
+    "options": [
+      "Only to the cache; the database is updated asynchronously later",
+      "Only to the database; the cache is updated asynchronously",
+      "Synchronously to both the cache and database",
+      "To a message queue, which updates both eventually"
+    ],
+    "answer": 2,
+    "explanation": "Write-through writes to cache and database synchronously, ensuring consistency but with higher latency. Write-back (async to DB) is faster but risks data loss. Write-around bypasses the cache for writes."
+  },
+  {
+    "question": "Which load balancing algorithm assigns requests to the server with the fewest active connections?",
+    "options": [
+      "Round-robin",
+      "Least connections",
+      "IP hash",
+      "Weighted round-robin"
+    ],
+    "answer": 1,
+    "explanation": "Least connections tracks active connections per server and sends new requests to the server with the fewest. This is better than round-robin for long-lived connections or varying request durations."
+  },
+  {
+    "question": "In what scenarios is a message queue (Kafka, RabbitMQ) most useful?",
+    "options": [
+      "Only for real-time synchronous communication between microservices",
+      "For decoupling producers from consumers and handling async tasks at scale",
+      "As a replacement for databases when storing persistent data",
+      "For encrypting sensitive data in transit"
+    ],
+    "answer": 1,
+    "explanation": "Message queues decouple producers from consumers, enabling asynchronous processing. Kafka handles high-throughput event streaming; RabbitMQ is good for job queues. Both enable resilience and scaling."
+  },
+  {
+    "question": "What is a key advantage of horizontal scaling over vertical scaling?",
+    "options": [
+      "It is always cheaper and simpler to implement",
+      "It provides better resilience; losing one server doesn't take down the system",
+      "It eliminates the need for load balancing",
+      "It automatically solves all consistency problems in distributed systems"
+    ],
+    "answer": 1,
+    "explanation": "Horizontal scaling (adding servers) improves resilience and avoids single points of failure. Vertical scaling (bigger servers) is simpler initially but hits hardware limits and risks downtime. Horizontal is preferred for critical systems."
+  },
+  {
+    "question": "What responsibility does an API Gateway typically have?",
+    "options": [
+      "Only routing requests to the correct backend service",
+      "Routing, authentication, rate limiting, request transformation, and logging",
+      "Storing all user data and session information",
+      "Replacing the need for microservices architecture"
+    ],
+    "answer": 1,
+    "explanation": "An API Gateway is a single entry point that handles routing, auth, rate limiting, request/response transformation, and logging. It decouples clients from backend services and enables cross-cutting concerns."
+  },
+  {
+    "question": "In an eventually consistent system, what does eventual consistency mean?",
+    "options": [
+      "Data is never consistent; replicas always disagree",
+      "Data consistency is guaranteed only if you wait long enough for replication",
+      "All nodes always see the same data at all times",
+      "Consistency is eventually abandoned for better performance"
+    ],
+    "answer": 1,
+    "explanation": "Eventual consistency means replicas may temporarily diverge but will converge to the same state over time. This trades immediate consistency for high availability, useful for systems like caches and social feeds."
+  }
+]

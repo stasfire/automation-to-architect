@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the key difference between Continuous Delivery and Continuous Deployment?",
+    "options": [
+      "Continuous Delivery automatically deploys to production; Continuous Deployment requires manual approval",
+      "Continuous Delivery prepares code for production with manual approval for deployment; Continuous Deployment automatically deploys to production",
+      "There is no difference; the terms are synonymous",
+      "Continuous Delivery is for applications; Continuous Deployment is only for infrastructure"
+    ],
+    "answer": 1,
+    "explanation": "CD (Delivery) means code is always production-ready and deployment is manual/gated. Continuous Deployment means changes automatically go to production. Continuous Deployment is higher velocity but requires mature testing/monitoring."
+  },
+  {
+    "question": "What is the correct syntax for triggering a GitHub Actions workflow on push to the main branch?",
+    "options": [
+      "on: push: branch: main",
+      "trigger: main-branch",
+      "on: push: branches: [main]",
+      "run: on-push-main"
+    ],
+    "answer": 2,
+    "explanation": "GitHub Actions uses YAML syntax. The 'on' keyword specifies triggers. 'branches: [main]' filters push events to only the main branch. Multiple branches can be listed: [main, develop]."
+  },
+  {
+    "question": "Why is secrets management critical in CI/CD pipelines?",
+    "options": [
+      "To reduce the number of environment variables in workflows",
+      "To prevent credentials (API keys, passwords, tokens) from being exposed in logs or leaked in version control",
+      "To make deployments faster by pre-storing credentials",
+      "To allow any team member to view credentials for security audits"
+    ],
+    "answer": 1,
+    "explanation": "Secrets are encrypted at rest in CI/CD systems and only decrypted during job execution. They should never appear in logs or be printed. Using secrets prevents credential exposure in version control and pipeline logs."
+  },
+  {
+    "question": "What does GitOps mean in the context of CI/CD?",
+    "options": [
+      "Using Git commands in CI/CD pipeline stages",
+      "Configuration and infrastructure defined in Git; pull requests drive all changes; Git is the single source of truth",
+      "Storing CI/CD logs in a Git repository",
+      "Using GitHub exclusively for all operations"
+    ],
+    "answer": 1,
+    "explanation": "GitOps treats Git as the source of truth for desired state. Infrastructure and deployment configurations are version controlled. Pull requests are the mechanism for proposing and reviewing changes."
+  },
+  {
+    "question": "What is an advantage of environment promotion (dev → staging → prod)?",
+    "options": [
+      "It reduces the number of Git repositories needed",
+      "It allows testing changes in production-like environments before exposing them to users",
+      "It eliminates the need for testing",
+      "It makes deployments slower by adding manual steps"
+    ],
+    "answer": 1,
+    "explanation": "Environment promotion ensures changes are validated in increasingly production-like environments before reaching production. Staging mirrors production configuration, catching environment-specific issues early."
+  }
+]

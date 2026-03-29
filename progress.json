@@ -1,0 +1,81 @@
+{
+  "learner": "Stas",
+  "started": null,
+  "last_updated": null,
+  "modules": {
+    "01-docker": {
+      "title": "Docker Fundamentals",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 5,
+      "test_passed": false,
+      "notes": ""
+    },
+    "02-aws-foundations": {
+      "title": "AWS Cloud Foundations",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 5,
+      "test_passed": false,
+      "notes": ""
+    },
+    "03-aws-sa-associate": {
+      "title": "AWS Solutions Architect Associate",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 8,
+      "test_passed": false,
+      "cert_passed": false,
+      "notes": ""
+    },
+    "04-terraform": {
+      "title": "Terraform & Infrastructure as Code",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 6,
+      "test_passed": false,
+      "cert_passed": false,
+      "notes": ""
+    },
+    "05-kubernetes": {
+      "title": "Kubernetes & Container Orchestration",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 6,
+      "test_passed": false,
+      "notes": ""
+    },
+    "06-ci-cd-pipelines": {
+      "title": "CI/CD Pipelines & GitOps",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 5,
+      "test_passed": false,
+      "notes": ""
+    },
+    "07-monitoring-observability": {
+      "title": "Monitoring & Observability",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 4,
+      "test_passed": false,
+      "notes": ""
+    },
+    "08-system-design": {
+      "title": "System Design for Interviews",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 8,
+      "test_passed": false,
+      "notes": ""
+    },
+    "09-interview-prep": {
+      "title": "Interview Preparation & Portfolio",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 5,
+      "test_passed": false,
+      "notes": ""
+    }
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary difference between a Docker container and a virtual machine (VM)?",
+    "options": [
+      "Containers share the host OS kernel and are lightweight; VMs include a full guest OS and are heavier",
+      "Containers use more resources than VMs but start faster",
+      "VMs can run any application while containers can only run Linux apps",
+      "Containers require hypervisor software while VMs do not"
+    ],
+    "answer": 0,
+    "explanation": "Containers are lightweight because they share the host operating system kernel, while VMs run a full guest OS on top of a hypervisor. This makes containers faster to start and more resource-efficient."
+  },
+  {
+    "question": "What is the purpose of a Dockerfile?",
+    "options": [
+      "It defines a runtime configuration for container networking",
+      "It contains instructions to build a Docker image, specifying the base image, dependencies, and commands",
+      "It manages multiple containers in a single application",
+      "It stores Docker login credentials and authentication tokens"
+    ],
+    "answer": 1,
+    "explanation": "A Dockerfile is a text file with step-by-step instructions that Docker uses to build an image. It specifies the base image, copies files, installs dependencies, and sets the default command to run."
+  },
+  {
+    "question": "What does Docker Compose do?",
+    "options": [
+      "It compresses Docker images to reduce storage space",
+      "It allows you to define and run multi-container applications using a YAML file",
+      "It automatically pushes images to Docker Hub",
+      "It optimizes Dockerfile instructions for faster builds"
+    ],
+    "answer": 1,
+    "explanation": "Docker Compose uses a YAML file (docker-compose.yml) to define services, volumes, networks, and environment variables for multi-container applications, making it easy to orchestrate complex setups."
+  },
+  {
+    "question": "Which Docker command would you use to create a new image from a Dockerfile?",
+    "options": [
+      "docker run Dockerfile",
+      "docker create -f Dockerfile",
+      "docker build -t image-name .",
+      "docker compose build Dockerfile"
+    ],
+    "answer": 2,
+    "explanation": "The 'docker build' command reads a Dockerfile and creates an image. The '-t' flag tags the image with a name, and the '.' specifies the build context (current directory)."
+  },
+  {
+    "question": "What is the purpose of Docker volumes?",
+    "options": [
+      "They increase the processing power of containers",
+      "They provide persistent storage that survives container deletion and enable data sharing between containers",
+      "They limit the memory available to a container",
+      "They encrypt sensitive data inside containers"
+    ],
+    "answer": 1,
+    "explanation": "Volumes are mount points that allow containers to access files on the host machine or share data between containers. Data in volumes persists even if the container is deleted."
+  }
+]

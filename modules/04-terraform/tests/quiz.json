@@ -1,0 +1,68 @@
+[
+  {
+    "question": "What is the correct order of the Terraform workflow when deploying infrastructure changes?",
+    "options": [
+      "terraform init → terraform plan → terraform apply → terraform destroy",
+      "terraform plan → terraform init → terraform apply",
+      "terraform apply → terraform plan → terraform init",
+      "terraform init → terraform destroy → terraform plan → terraform apply"
+    ],
+    "answer": 0,
+    "explanation": "The standard Terraform workflow is: init (initialize and download providers), plan (preview changes), apply (execute changes), and optionally destroy (cleanup). init must run first to set up the environment."
+  },
+  {
+    "question": "What is the primary purpose of the Terraform state file (.tfstate)?",
+    "options": [
+      "It stores the code you wrote in HCL format",
+      "It tracks the current configuration of real-world resources and serves as the source of truth for comparisons",
+      "It contains AWS credentials and API keys for authentication",
+      "It is used to store Terraform module definitions"
+    ],
+    "answer": 1,
+    "explanation": "The state file is a JSON record of all managed resources and their current configuration. Terraform uses it to determine what changes need to be made when you run 'plan' or 'apply'. It's the single source of truth for resource state."
+  },
+  {
+    "question": "In Terraform, what is a module and why would you use one?",
+    "options": [
+      "A module is a cloud provider plugin that enables Terraform to interact with AWS, Azure, or GCP",
+      "A module is a reusable container of Terraform configurations that packages infrastructure patterns for consistency and reusability",
+      "A module is a file that stores sensitive information like API keys and passwords",
+      "A module is a feature in Terraform Cloud for managing team permissions"
+    ],
+    "answer": 1,
+    "explanation": "Modules are directories containing Terraform configurations (.tf files) that can be called from other configurations. They enable code reuse, consistency, and easier maintenance of complex infrastructure."
+  },
+  {
+    "question": "What does a Terraform provider do?",
+    "options": [
+      "It stores your Terraform state in a remote location like S3",
+      "It is a plugin that enables Terraform to interact with cloud platforms and services, defining available resources",
+      "It automatically backs up your infrastructure configuration files",
+      "It encrypts sensitive data in your Terraform variables"
+    ],
+    "answer": 1,
+    "explanation": "Providers are plugins that Terraform uses to interface with cloud platforms (AWS, Azure, GCP), infrastructure-as-a-service (IaaS) platforms, and other APIs. They define what resources are available for you to use."
+  },
+  {
+    "question": "What is the purpose of the 'terraform import' command?",
+    "options": [
+      "It downloads Terraform modules from the Terraform Registry",
+      "It backs up your state file to a remote location",
+      "It brings existing infrastructure that was created manually into Terraform management",
+      "It imports variables from a .tfvars file"
+    ],
+    "answer": 2,
+    "explanation": "terraform import allows you to take real-world resources that exist (created manually or by other tools) and bring them under Terraform state management. You write the configuration and then import the resource."
+  },
+  {
+    "question": "Why is using a remote backend (like S3) for Terraform state important in a team environment?",
+    "options": [
+      "It automatically generates Terraform code for you",
+      "It enables team collaboration by preventing concurrent modifications, providing backups, and maintaining a single source of truth",
+      "It reduces the cost of running Terraform",
+      "It eliminates the need for input variables in your configuration"
+    ],
+    "answer": 1,
+    "explanation": "Remote backends enable multiple team members to safely work with the same infrastructure. They prevent conflicts through state locking, provide disaster recovery through backups, and centralize state management."
+  }
+]

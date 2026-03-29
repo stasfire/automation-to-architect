@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What does AWS's shared responsibility model state about security?",
+    "options": [
+      "AWS is responsible for all security; customers only need to choose strong passwords",
+      "AWS secures infrastructure (data centers, hardware); customers secure applications (OS updates, firewalls, data encryption)",
+      "Customers are responsible for all security in AWS",
+      "Security responsibility is shared equally 50/50 for all services"
+    ],
+    "answer": 1,
+    "explanation": "The shared responsibility model divides security duties. AWS manages foundational infrastructure security, while customers manage application-level security including OS patches, network policies, and data protection."
+  },
+  {
+    "question": "Which EC2 instance type is best for a web application with moderate compute and memory needs?",
+    "options": [
+      "Compute-optimized (c5 family) - for CPU-intensive workloads",
+      "General-purpose (t3 or m5 family) - balanced compute, memory, and networking",
+      "Memory-optimized (r5 family) - for in-memory databases",
+      "Storage-optimized (i3 family) - for high I/O operations"
+    ],
+    "answer": 1,
+    "explanation": "General-purpose instances (t3, m5 families) provide balanced resources for typical web applications. Compute, memory, and network are proportional, making them suitable for most web servers."
+  },
+  {
+    "question": "What are S3 storage classes used for?",
+    "options": [
+      "Organizing objects into folders like a file system",
+      "Controlling who has permission to access S3 buckets",
+      "Optimizing costs by matching storage type to access patterns (Standard for frequent, Glacier for archival)",
+      "Encrypting data stored in S3 buckets"
+    ],
+    "answer": 2,
+    "explanation": "S3 storage classes optimize costs based on how frequently data is accessed. Standard is for frequent access, Standard-IA for infrequent access, and Glacier for long-term archival with minimal cost."
+  },
+  {
+    "question": "What is the best practice for IAM access management?",
+    "options": [
+      "Grant administrator access to all users for convenience",
+      "Use root account for daily work to have full permissions",
+      "Follow least-privilege principle: grant only the minimum permissions needed for users to perform their role",
+      "Share AWS access keys with team members via email"
+    ],
+    "answer": 2,
+    "explanation": "Least-privilege is a security best practice. Users should have only the permissions necessary for their specific job, reducing the blast radius if credentials are compromised."
+  },
+  {
+    "question": "What is the purpose of a VPC?",
+    "options": [
+      "To compress data for faster network transfer",
+      "To provide an isolated network environment in AWS where you control IP ranges, subnets, and routing",
+      "To automatically backup all your AWS resources",
+      "To encrypt all traffic between AWS services"
+    ],
+    "answer": 1,
+    "explanation": "A VPC (Virtual Private Cloud) is your isolated network in AWS. You define the IP address range (CIDR block), create public and private subnets, and control how traffic flows between resources."
+  }
+]
