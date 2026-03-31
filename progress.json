@@ -57,7 +57,7 @@
       "title": "Monitoring & Observability",
       "status": "not_started",
       "exercises_completed": 0,
-      "exercises_total": 4,
+      "exercises_total": 5,
       "test_passed": false,
       "notes": ""
     },
@@ -71,6 +71,14 @@
     },
     "09-interview-prep": {
       "title": "Interview Preparation & Portfolio",
+      "status": "not_started",
+      "exercises_completed": 0,
+      "exercises_total": 5,
+      "test_passed": false,
+      "notes": ""
+    },
+    "10-ai-for-cloud-devops": {
+      "title": "AI for Cloud & DevOps Engineers",
       "status": "not_started",
       "exercises_completed": 0,
       "exercises_total": 5,

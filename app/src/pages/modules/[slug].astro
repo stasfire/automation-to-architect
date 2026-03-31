@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { MODULE_CONFIGS, getModuleContent, getModuleConfig } from '../../lib/modules';
+
+const { slug } = Astro.params;
+const config = getModuleConfig(slug!);
+
+if (!config) {
+  return Astro.redirect('/dashboard');
+}
+
+const htmlContent = await getModuleContent(slug!);
+
+const currentIndex = MODULE_CONFIGS.findIndex(m => m.slug === slug);
+const prevModule = currentIndex > 0 ? MODULE_CONFIGS[currentIndex - 1] : null;
+const nextModule = currentIndex < MODULE_CONFIGS.length - 1 ? MODULE_CONFIGS[currentIndex + 1] : null;
+
+const typeColors: Record<string, string> = {
+  course: 'text-accent-light bg-accent/10',
+  docs: 'text-cyan bg-cyan/10',
+  practice: 'text-success bg-success/10',
+  tool: 'text-purple bg-purple/10',
+  community: 'text-pink bg-pink/10',
+};
+
+function getTypeColor(type: string): string {
+  return typeColors[type] || 'text-navy-400 bg-white/5';
+}
+
+const moduleIcons: Record<string, string> = {
+  '01': '\u{1F433}', '02': '\u2601\uFE0F', '03': '\u{1F3D7}\uFE0F',
+  '04': '\u{1F4E6}', '05': '\u2699\uFE0F', '06': '\u{1F680}',
+  '07': '\u{1F4CA}', '08': '\u{1F9E9}', '09': '\u{1F3AF}',
+  '10': '\u{1F916}',
+};
+---
+
+<Layout title={config.title}>
+  <!-- Module header banner -->
+  <div class="relative overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-cyan/10"></div>
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+    <div class="max-w-5xl mx-auto px-6 py-8 relative">
+      <nav class="flex items-center gap-2 text-sm text-navy-500 mb-5">
+        <a href="/dashboard" class="hover:text-navy-300 transition-colors">Dashboard</a>
+        <svg class="w-3 h-3 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-navy-300">Module {config.number}</span>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl">
+          {moduleIcons[config.number]}
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <span class="text-xs bg-accent/10 text-accent px-2.5 py-0.5 rounded-md font-mono">{config.month}</span>
+            <span class="text-xs text-navy-500">{config.estimatedTime}</span>
+            {config.cost !== 'Free' ? (
+              <span class="text-xs bg-warning/10 text-warning px-2.5 py-0.5 rounded-md">{config.cost}</span>
+            ) : (
+              <span class="text-xs bg-success/10 text-success px-2.5 py-0.5 rounded-md">Free</span>
+            )}
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-bold text-white">{config.title}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-6 py-10">
+    <div class="flex flex-col lg:flex-row gap-10">
+      <!-- Content -->
+      <article class="flex-1 prose prose-invert prose-headings:text-white prose-h1:hidden prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-cyan prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-navy-900 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-xl prose-strong:text-navy-200 prose-li:text-navy-400 prose-p:text-navy-400 prose-p:leading-relaxed max-w-none" set:html={htmlContent} />
+
+      <!-- Sidebar -->
+      <aside class="lg:w-72 flex-shrink-0 space-y-5">
+        <!-- Exercises -->
+        <div class="glow-card rounded-2xl p-5 sticky top-24">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-white font-semibold text-sm">Exercises</h3>
+            <span class="ml-auto text-[10px] text-navy-500 font-mono">0/{config.exerciseCount}</span>
+          </div>
+          <div class="space-y-1.5">
+            {Array.from({ length: config.exerciseCount }, (_, i) => (
+              <label class="flex items-center gap-3 text-sm text-navy-400 cursor-pointer hover:text-navy-200 p-2 rounded-lg hover:bg-white/[0.03] transition-all">
+                <div class="w-5 h-5 rounded-md border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                </div>
+                <span>Exercise {i + 1}</span>
+              </label>
+            ))}
+          </div>
+
+          <!-- Progress -->
+          <div class="mt-4 pt-4 border-t border-white/5">
+            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+              <div class="h-full w-0 rounded-full bg-gradient-to-r from-accent to-cyan transition-all duration-700"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz CTA -->
+        <a href={`/quiz/${slug}`} class="group block relative overflow-hidden rounded-2xl p-5 text-center border border-accent/20 bg-gradient-to-br from-accent/10 to-purple/5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 transition-all">
+          <div class="text-accent font-semibold mb-1 group-hover:text-accent-light transition-colors">Take the Quiz</div>
+          <div class="text-xs text-navy-500">Test your knowledge &rarr;</div>
+        </a>
+
+        <!-- Resources -->
+        {config.resources.length > 0 && (
+          <div class="glow-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <svg class="w-4 h-4 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+              </svg>
+              <h3 class="text-white font-semibold text-sm">Resources</h3>
+              <span class="ml-auto text-[10px] text-navy-500">{config.resources.length} links</span>
+            </div>
+            <div class="space-y-2">
+              {config.resources.map(r => (
+                <a href={r.url} target="_blank" rel="noopener" class="group block p-3 rounded-xl hover:bg-white/[0.03] border border-transparent hover:border-white/5 transition-all">
+                  <div class="flex items-start gap-2.5">
+                    <span class:list={["text-[9px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5", getTypeColor(r.type)]}>
+                      {r.type}
+                    </span>
+                    <div class="min-w-0">
+                      <div class="text-sm text-navy-200 font-medium group-hover:text-white transition-colors leading-snug flex items-center gap-1">
+                        <span class="truncate">{r.title}</span>
+                        <svg class="w-3 h-3 flex-shrink-0 text-navy-600 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </div>
+                      <p class="text-[11px] text-navy-500 mt-0.5 leading-relaxed">{r.description}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </aside>
+    </div>
+
+    <!-- Prev/Next navigation -->
+    <nav class="flex items-center justify-between mt-14 pt-8 border-t border-white/5">
+      {prevModule ? (
+        <a href={`/modules/${prevModule.slug}`} class="group flex items-center gap-2 text-sm text-navy-500 hover:text-white transition-colors">
+          <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          {prevModule.title}
+        </a>
+      ) : <span />}
+      {nextModule ? (
+        <a href={`/modules/${nextModule.slug}`} class="group flex items-center gap-2 text-sm text-navy-500 hover:text-white transition-colors">
+          {nextModule.title}
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      ) : <span />}
+    </nav>
+  </div>
+</Layout>

@@ -11,6 +11,8 @@
 - Manage secrets and credentials securely in CI/CD systems
 - Implement GitOps workflows with environment promotion (dev → staging → prod)
 - Monitor and troubleshoot CI/CD pipeline failures
+- Understand Kubernetes-native CI/CD tools (ArgoCD, Flux, Devtron)
+- Use AI-assisted pipeline optimization (GitHub Copilot for workflow authoring)
 - Best practices for pipeline design and maintenance
 
 ## Key Concepts
@@ -39,11 +41,19 @@ Code flows through environments with increasing stability: dev (testing) → sta
 **Artifacts and Images**
 Build outputs (Docker images, compiled binaries, packages) produced by CI and consumed by CD. Store in registries (ECR, Docker Hub) for versioning and deployment.
 
+**GitOps Controllers (ArgoCD / Flux)**
+Kubernetes-native continuous delivery tools that sync the desired state from Git to your cluster. ArgoCD provides a web UI for visualizing sync status. Flux is lighter-weight and runs entirely via CRDs. Both enable pull-based deployments where the cluster pulls changes from Git rather than CI pushing to the cluster.
+
+**AI-Assisted Pipeline Authoring**
+GitHub Copilot can generate workflow YAML, suggest CI steps, and debug failing pipelines. Tools like Harness use AI to optimize pipeline execution order, predict flaky tests, and auto-rollback failed deployments.
+
 ## Curated Resources
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions) - Official GitHub Actions reference, workflow syntax, and best practices
 - [GitLab CI Documentation](https://docs.gitlab.com/ee/ci/) - Comprehensive GitLab CI/CD pipeline configuration guide
 - [GitHub Marketplace Actions](https://github.com/marketplace?type=actions) - Community and verified actions for common tasks (tests, deployments, notifications)
+- [ArgoCD Documentation](https://argo-cd.readthedocs.io/) - Kubernetes-native GitOps continuous delivery
+- [Dometrain - Learn GitHub Actions (Free)](https://dometrain.com/course/from-zero-to-hero-github-actions/) - Free course from basics to advanced workflows
 
 ## Exercises
 

@@ -11,7 +11,9 @@
 - Manage Terraform state and implement remote backends
 - Import existing infrastructure into Terraform management
 - Work with providers, variables, outputs, and data sources
-- Prepare for the HashiCorp Certified: Terraform Associate certification
+- Understand `depends_on`, lifecycle rules (`create_before_destroy`), and custom validation conditions
+- Work with HCP Terraform (workspaces, projects, team collaboration)
+- Prepare for the HashiCorp Certified: Terraform Associate 004 certification (covers Terraform 1.12+)
 
 ## Key Concepts
 
@@ -38,6 +40,12 @@ Input variables make configurations dynamic and reusable. Outputs expose values 
 
 **Remote State and Backends**
 Storing state remotely (S3, Terraform Cloud) enables team collaboration, prevents concurrent modifications, and provides backup/disaster recovery. Backends abstract state storage.
+
+**Lifecycle Rules**
+Control resource behavior during updates: `create_before_destroy` ensures new resources are created before old ones are deleted (zero-downtime), `prevent_destroy` protects critical resources, and `ignore_changes` skips specific attributes.
+
+**HCP Terraform (formerly Terraform Cloud)**
+HashiCorp's managed platform for team collaboration. Provides remote state management, policy enforcement (Sentinel), private module registries, and run triggers for multi-workspace orchestration.
 
 ## Curated Resources
 
@@ -92,7 +100,7 @@ Storing state remotely (S3, Terraform Cloud) enables team collaboration, prevent
 
 ## Certification Path
 
-This module covers the HashiCorp Certified: Terraform Associate exam.
+This module targets the **HashiCorp Certified: Terraform Associate 004** exam (launched January 2026, replacing 003). The 004 exam covers Terraform 1.12+ and includes expanded coverage of HCP Terraform, lifecycle rules, and custom validation conditions.
 
 **Estimated Cost:**
 - Udemy course: ~$14 (often on sale from $99)

@@ -1,5 +1,49 @@
 [
   {
+    "question": "What is the difference between block storage, file storage, and object storage?",
+    "options": [
+      "They are three names for the same thing — all store files on disk",
+      "Block storage is raw disk for one server, file storage is shared over a network, object storage uses flat key-value access via HTTP API",
+      "Block storage is for databases only, file storage is for documents only, object storage is for images only",
+      "Object storage is the fastest, block storage is the slowest, file storage is in between"
+    ],
+    "answer": 1,
+    "explanation": "Block storage (EBS) provides raw disk blocks attached to a single server — fastest, used for OS and databases. File storage (EFS) is a shared filesystem multiple servers can mount via NFS. Object storage (S3) stores data as objects with metadata, accessed via HTTP API — scales infinitely but has higher latency."
+  },
+  {
+    "question": "Which transport protocol would you choose for a live video streaming application and why?",
+    "options": [
+      "TCP — because it guarantees every packet arrives in order",
+      "UDP — because speed matters more than perfect delivery for real-time video",
+      "HTTP — because all video is delivered over web protocols",
+      "ICMP — because it's designed for multimedia streaming"
+    ],
+    "answer": 1,
+    "explanation": "UDP is preferred for live streaming because it prioritizes speed over reliability. A dropped frame in live video is better than the delay caused by TCP's retransmission. TCP's 3-way handshake and guaranteed delivery add latency that's unacceptable for real-time content. Recorded/on-demand video often uses TCP (via HTTP) since buffering is acceptable."
+  },
+  {
+    "question": "A server has inbound firewall rules allowing port 443 (HTTPS) from anywhere. An attacker tries to connect on port 22 (SSH). What happens?",
+    "options": [
+      "The connection succeeds because the server has SSH installed",
+      "The connection is blocked because only port 443 inbound is allowed",
+      "The connection succeeds because outbound rules allow all traffic",
+      "The attacker is automatically banned by the firewall"
+    ],
+    "answer": 1,
+    "explanation": "Firewalls evaluate inbound rules per port and source. Since only port 443 is allowed inbound, the SSH connection on port 22 is dropped silently. The server never sees the request. This is why security groups in AWS default to deny-all inbound — you explicitly open only the ports you need."
+  },
+  {
+    "question": "What happens during a DNS lookup when you type 'example.com' in your browser?",
+    "options": [
+      "Your browser directly connects to example.com using the domain name — no IP needed",
+      "Your browser checks its cache, then asks a recursive resolver which queries root → TLD → authoritative nameservers to get the IP address",
+      "The browser sends the domain to your router which has all DNS records stored locally",
+      "DNS only works for email (MX records) — browsers use a different system"
+    ],
+    "answer": 1,
+    "explanation": "DNS resolution is hierarchical: browser cache → OS cache → recursive resolver → root nameserver (who handles .com?) → TLD nameserver (who handles example.com?) → authoritative nameserver (what IP is example.com?). The result is cached at each level to speed up future lookups."
+  },
+  {
     "question": "What does AWS's shared responsibility model state about security?",
     "options": [
       "AWS is responsible for all security; customers only need to choose strong passwords",
@@ -53,5 +97,27 @@
     ],
     "answer": 1,
     "explanation": "A VPC (Virtual Private Cloud) is your isolated network in AWS. You define the IP address range (CIDR block), create public and private subnets, and control how traffic flows between resources."
+  },
+  {
+    "question": "A VPC uses the CIDR block 10.0.0.0/16. How many IP addresses does this provide, and what does /16 mean?",
+    "options": [
+      "/16 means 16 IP addresses are available in the network",
+      "/16 means the first 16 bits are the network portion, leaving 16 bits for hosts — providing 65,536 addresses",
+      "/16 means the network is split into 16 equal subnets automatically",
+      "/16 means only 16 subnets can be created within this VPC"
+    ],
+    "answer": 1,
+    "explanation": "CIDR notation /16 means the first 16 bits (out of 32) identify the network. The remaining 16 bits are for host addresses, giving 2^16 = 65,536 total addresses. In binary, the subnet mask 255.255.0.0 has 16 ones followed by 16 zeros: 11111111.11111111.00000000.00000000."
+  },
+  {
+    "question": "What is the decimal value of the binary number 11000000?",
+    "options": [
+      "192",
+      "128",
+      "224",
+      "160"
+    ],
+    "answer": 0,
+    "explanation": "In binary, 11000000 = 128 + 64 = 192. Each bit position represents a power of 2 from right to left: 1, 2, 4, 8, 16, 32, 64, 128. The two leftmost bits are set (128 + 64), giving 192. This is the value you see in subnet masks like 255.255.255.192 (/26)."
   }
 ]

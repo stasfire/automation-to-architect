@@ -1,0 +1,90 @@
+[
+  {
+    "question": "What is the primary advantage of GitHub Copilot Agent Mode over traditional autocomplete?",
+    "options": [
+      "It only works with Python code while autocomplete works with all languages",
+      "It can analyze your codebase, make multi-file changes, and self-heal runtime errors",
+      "It replaces the need for code review since AI-generated code is always correct",
+      "It requires no internet connection and runs entirely locally"
+    ],
+    "answer": 1,
+    "explanation": "Copilot Agent Mode goes beyond single-line autocomplete — it can understand your full codebase context, make changes across multiple files, suggest terminal commands, and even fix errors it encounters. However, it still requires human review; AI-generated code is not guaranteed to be correct or secure."
+  },
+  {
+    "question": "When should a Solutions Architect recommend Amazon Bedrock vs Amazon SageMaker?",
+    "options": [
+      "Bedrock for custom model training; SageMaker for using pre-trained models via API",
+      "Bedrock for using pre-trained foundation models via API; SageMaker for training custom models on your data",
+      "They are interchangeable — both do the same thing at different price points",
+      "Bedrock for image generation only; SageMaker for all other AI tasks"
+    ],
+    "answer": 1,
+    "explanation": "Bedrock provides access to pre-trained foundation models (Claude, Llama, Titan) via API — no ML expertise needed. SageMaker is for training, fine-tuning, and deploying custom models with your own data. For most generative AI use cases (~90%), Bedrock is the right choice."
+  },
+  {
+    "question": "What is the Model Context Protocol (MCP)?",
+    "options": [
+      "A protocol for encrypting AI model weights during transfer between servers",
+      "An AWS-specific API for invoking models in SageMaker endpoints",
+      "A standard that enables AI models to interact with external tools and data sources",
+      "A monitoring protocol for tracking AI model performance and accuracy over time"
+    ],
+    "answer": 2,
+    "explanation": "MCP (Model Context Protocol) provides a standardized way for AI models to interact with external tools, APIs, file systems, and data sources. It enables agentic workflows where AI can take actions like reading files, running commands, and calling APIs through a well-defined interface."
+  },
+  {
+    "question": "What is the most important skill when using AI to generate Infrastructure as Code?",
+    "options": [
+      "Memorizing the exact syntax for every cloud provider's resources",
+      "Writing precise prompts that specify constraints and reviewing output for correctness and security",
+      "Letting the AI handle everything and deploying the output directly without review",
+      "Using only one AI tool to maintain consistency across all infrastructure code"
+    ],
+    "answer": 1,
+    "explanation": "Prompt engineering — writing precise, constraint-rich prompts — is the key skill. Always specify the cloud provider, security requirements, naming conventions, and compliance needs. And always review AI-generated code for security vulnerabilities before deploying. AI accelerates but does not replace human judgment."
+  },
+  {
+    "question": "How does AI-powered monitoring (AIOps) differ from traditional threshold-based alerting?",
+    "options": [
+      "AIOps only works with cloud-native applications while traditional monitoring works with any system",
+      "AIOps detects anomalies and predicts failures that static thresholds would miss, and correlates events across services",
+      "AIOps completely replaces the need for human on-call engineers",
+      "AIOps is more expensive and less accurate than traditional monitoring"
+    ],
+    "answer": 1,
+    "explanation": "AIOps uses machine learning to detect anomalies in metrics that static thresholds miss (like gradual degradation), correlate events across multiple services, and predict failures before they happen. It augments human operators rather than replacing them — engineers still make the final decisions on remediation."
+  },
+  {
+    "question": "What is the best approach when AI generates a Terraform module for an S3 bucket?",
+    "options": [
+      "Deploy it immediately since AI understands AWS best practices",
+      "Run it through a security scanner (checkov/tfsec), verify encryption settings, check public access blocks, and review IAM policies",
+      "Only check that it applies successfully with terraform plan",
+      "Rewrite it entirely by hand since AI-generated IaC is unreliable"
+    ],
+    "answer": 1,
+    "explanation": "AI-generated infrastructure code often misses security best practices like enabling encryption, blocking public access, or applying least-privilege IAM. Always run through security scanners and manually verify security-critical settings. AI is a great starting point but not a replacement for security review."
+  },
+  {
+    "question": "What is Amazon Q Developer and how does it differ from GitHub Copilot?",
+    "options": [
+      "They are the same product rebranded for different markets",
+      "Amazon Q is a database query optimizer; Copilot is a code generator",
+      "Amazon Q is AWS-focused (CloudFormation, AWS errors, migration planning) while Copilot is a general-purpose coding assistant",
+      "Amazon Q requires a paid subscription; Copilot is always free"
+    ],
+    "answer": 2,
+    "explanation": "Amazon Q Developer is deeply integrated with the AWS ecosystem — it generates CloudFormation/Terraform for AWS, explains AWS-specific errors, helps with AWS migration planning, and works inside the AWS Console. GitHub Copilot is a broader general-purpose coding assistant. Many engineers use both."
+  },
+  {
+    "question": "In the context of AI-powered integration engineering, what does 'self-healing' refer to?",
+    "options": [
+      "AI models that automatically retrain themselves when accuracy drops",
+      "Integration flows that detect failures, diagnose root causes, and apply corrective actions autonomously",
+      "Systems that automatically purchase additional cloud resources when they run out",
+      "AI assistants that fix their own prompts when they give wrong answers"
+    ],
+    "answer": 1,
+    "explanation": "Self-healing integrations use AI to detect anomalies in data flows, classify errors, predict optimal retry strategies, and automatically apply corrective actions (like switching to backup endpoints or adjusting data mappings). This shifts integration engineering from reactive firefighting to proactive, autonomous systems."
+  }
+]

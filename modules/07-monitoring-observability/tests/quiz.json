@@ -55,6 +55,17 @@
     "explanation": "Structured logs with consistent fields (request ID, service name, user ID) enable powerful querying and correlation across services. Log aggregation systems like ELK or Splunk can parse and search structured logs efficiently."
   },
   {
+    "question": "What is OpenTelemetry and why has it become the industry standard for observability?",
+    "options": [
+      "A proprietary monitoring tool from Datadog for collecting metrics",
+      "A vendor-neutral open standard for collecting traces, metrics, and logs that can export to any backend",
+      "A Grafana plugin that replaces Prometheus for metric scraping",
+      "An AWS service for distributed tracing within the AWS ecosystem only"
+    ],
+    "answer": 1,
+    "explanation": "OpenTelemetry (OTel) is a CNCF project providing vendor-neutral SDKs and a Collector for instrumenting applications. You instrument once with OTel and export telemetry to any backend (Prometheus, Jaeger, Datadog, etc.), avoiding vendor lock-in."
+  },
+  {
     "question": "In Prometheus, what does the query rate(http_requests_total[5m]) calculate?",
     "options": [
       "The total number of HTTP requests in the last 5 minutes",

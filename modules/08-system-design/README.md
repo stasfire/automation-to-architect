@@ -8,6 +8,7 @@ Master large-scale system design through hands-on exercises and interview prepar
 - Design scalable systems for real-world scenarios (chat, e-commerce, payments)
 - Make informed trade-offs between consistency, availability, and partition tolerance
 - Choose appropriate databases, caching strategies, and messaging queues for use cases
+- Design event-driven architectures using pub/sub, message brokers, and AsyncAPI
 - Design load balancing, rate limiting, and CDN strategies
 - Write architecture decision records (ADRs) for design choices
 - Practice system design interviews and communicate solutions under time pressure
@@ -32,8 +33,8 @@ Sharding distributes data across multiple databases by key (horizontal partition
 - IP hash: consistent routing by client IP (good for session affinity)
 - Weighted: distribute based on server capacity
 
-**Message Queues**
-Decouple producers from consumers. Use for async tasks, event streaming, job scheduling. Choose Kafka for high-throughput streaming, RabbitMQ for job queues, SQS for AWS-native applications.
+**Message Queues and Event-Driven Architecture (EDA)**
+Decouple producers from consumers. Use for async tasks, event streaming, job scheduling. Choose Kafka for high-throughput streaming, RabbitMQ for job queues, SQS for AWS-native applications. Event-driven architecture enables real-time data processing, event sourcing, and CQRS patterns. Use AsyncAPI to document event-driven APIs the same way OpenAPI documents REST APIs.
 
 **Horizontal vs. Vertical Scaling**
 Horizontal: add more servers (distributed, resilient but complex).
@@ -48,15 +49,16 @@ In distributed systems, replicas may temporarily diverge; they converge over tim
 
 ## Curated Resources
 
-- [System Design Primer (GitHub)](https://github.com/donnemartin/system-design-primer) - Comprehensive guide with scalability concepts
-- [ByteByteGo System Design 101 (GitHub)](https://github.com/ByteByteGoHq/system-design-101) - Visual diagrams and real-world examples
+- [ByteByteGo (Alex Xu)](https://bytebytego.com/) - The top structured system design resource with visual diagrams, case studies, and interview prep
+- [System Design Primer (GitHub)](https://github.com/donnemartin/system-design-primer) - Comprehensive free guide with scalability concepts
+- [ByteByteGo System Design 101 (GitHub)](https://github.com/ByteByteGoHq/system-design-101) - Free visual diagrams and real-world examples
 - [Awesome System Design Resources (GitHub)](https://github.com/ashishps1/awesome-system-design-resources) - Curated links and papers
 - [Grokking the System Design Interview](https://www.designgurus.io/course/grokking-the-system-design-interview) - Structured course with 20+ case studies
 - [Pramp](https://www.pramp.com) - Free mock interviews with real engineers
 
 Additional reading:
-- Designing Data-Intensive Applications (book by Martin Kleppmann)
-- Twitter's Snowflake architecture (UUID generation at scale)
+- Designing Data-Intensive Applications (book by Martin Kleppmann) — the essential distributed systems book
+- [AsyncAPI Specification](https://www.asyncapi.com/) — the OpenAPI equivalent for event-driven APIs
 - Netflix's microservices architecture blog posts
 - Amazon's DynamoDB design paper
 

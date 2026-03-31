@@ -9,7 +9,9 @@ Learn how to instrument systems for visibility, collect and visualize metrics, b
 - Build effective dashboards and visualizations with Grafana
 - Implement alerting rules and notifications for system health
 - Monitor cloud services (AWS CloudWatch) and configure alarms
+- Instrument applications with OpenTelemetry for vendor-neutral telemetry
 - Implement structured logging and log aggregation strategies
+- Understand distributed tracing across microservices
 - Define and track SLIs, SLOs, and SLAs in your systems
 - Create runbooks and incident response procedures
 
@@ -27,6 +29,12 @@ Grafana is an open-source visualization platform that queries data sources (Prom
 **Alerting Best Practices**
 Alert on outcomes (SLOs missed), not raw thresholds. Reduce noise with proper thresholds and alert grouping. Route alerts to on-call teams. Include runbooks in notifications.
 
+**OpenTelemetry (OTel)**
+The vendor-neutral open standard for collecting traces, metrics, and logs. OTel provides SDKs for auto-instrumenting applications and an OpenTelemetry Collector that receives, processes, and exports telemetry data to any backend (Prometheus, Grafana, Jaeger, Datadog, etc.). It has become the industry standard for observability instrumentation — learn OTel once, export to any vendor.
+
+**Distributed Tracing**
+Traces follow a request as it travels across microservices. Each service adds a "span" to the trace. Tools like Jaeger and Grafana Tempo visualize the full request path, making it easy to find which service caused latency or errors. OpenTelemetry is the standard way to instrument traces.
+
 **Structured Logging**
 Use JSON or key-value logging formats. Include request IDs, user IDs, and service names. Aggregate logs with ELK Stack, Splunk, or cloud services for searchability and correlation.
 
@@ -41,10 +49,12 @@ SLA (Service Level Agreement): contract with consequences if SLO is missed.
 - [Grafana Tutorials](https://grafana.com/tutorials/) - Video walkthroughs and hands-on labs
 - [AWS CloudWatch Documentation](https://docs.aws.amazon.com/cloudwatch/) - For cloud-native monitoring
 - [Grafana Playground](https://play.grafana.org/) - Free sandbox to explore Grafana without setup
+- [Getting Started with OpenTelemetry (LFS148)](https://training.linuxfoundation.org/training/getting-started-with-opentelemetry-lfs148/) - Free Linux Foundation course, the best OTel starting point
+- [OpenTelemetry Official Docs](https://opentelemetry.io/docs/) - Comprehensive reference for all languages and collectors
 
 Additional reading:
 - Google SRE Book chapter on Monitoring (free online)
-- Datadog Observability 101 course (free certification)
+- [Coursera - OpenTelemetry for Unified Observability](https://www.coursera.org/learn/opentelemetry-for-unified-observability) - Free to audit, hands-on SDK instrumentation
 - O'Reilly "Observability Engineering" (book)
 
 ## Exercises
@@ -62,7 +72,15 @@ Additional reading:
    - Configure a notification channel (email, Slack, or webhook)
    - Time: 4-5 hours
 
-3. **Configure AWS CloudWatch Alarms for EC2/Lambda**
+3. **Instrument an App with OpenTelemetry**
+   - Add the OpenTelemetry SDK to your Node.js or Python app
+   - Enable auto-instrumentation for HTTP requests and database calls
+   - Set up the OpenTelemetry Collector to receive and export telemetry
+   - Export traces to Jaeger (Docker) and metrics to Prometheus
+   - View distributed traces across at least 2 services
+   - Time: 4-5 hours
+
+4. **Configure AWS CloudWatch Alarms for EC2/Lambda**
    - Create an EC2 instance or Lambda function
    - Set up custom metrics or use default metrics (CPU, invocations, duration)
    - Define CloudWatch alarms for warning and critical thresholds
@@ -70,7 +88,7 @@ Additional reading:
    - Test alarm notifications via SNS
    - Time: 3-4 hours
 
-4. **Implement Structured Logging with Log Aggregation**
+5. **Implement Structured Logging with Log Aggregation**
    - Modify your app to output JSON logs with request IDs and service name
    - Set up an ELK stack (Elasticsearch, Logstash, Kibana) OR use AWS CloudWatch Logs
    - Aggregate and search logs by request ID, error type, or service

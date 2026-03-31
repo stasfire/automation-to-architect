@@ -28,11 +28,12 @@ A structured, hands-on curriculum that takes you from automation engineering to 
 | 04 | **Terraform & Infrastructure as Code** | ⬜ | `░░░░░░░░░░ 0/6` | ⬜ |
 | 05 | **Kubernetes & Container Orchestration** | ⬜ | `░░░░░░░░░░ 0/6` | ⬜ |
 | 06 | **CI/CD Pipelines & GitOps** | ⬜ | `░░░░░░░░░░ 0/5` | ⬜ |
-| 07 | **Monitoring & Observability** | ⬜ | `░░░░░░░░░░ 0/4` | ⬜ |
+| 07 | **Monitoring & Observability** | ⬜ | `░░░░░░░░░░ 0/5` | ⬜ |
 | 08 | **System Design for Interviews** | ⬜ | `░░░░░░░░░░ 0/8` | ⬜ |
 | 09 | **Interview Preparation & Portfolio** | ⬜ | `░░░░░░░░░░ 0/5` | ⬜ |
+| 10 | **AI for Cloud & DevOps Engineers** | ⬜ | `░░░░░░░░░░ 0/5` | ⬜ |
 
-**Overall: 0%** — 0/52 exercises · 0/9 tests passed · 0/9 modules completed
+**Overall: 0%** — 0/58 exercises · 0/10 tests passed · 0/10 modules completed
 
 <!-- PROGRESS:END -->
 
@@ -70,9 +71,15 @@ A structured, hands-on curriculum that takes you from automation engineering to 
 
 | Module | What You'll Learn | Time | Cost |
 |--------|-------------------|------|------|
-| [07 - Monitoring](modules/07-monitoring-observability/) | Prometheus, Grafana, CloudWatch, alerting | ~2 weeks | Free |
-| [08 - System Design](modules/08-system-design/) | Scalability, databases, caching, real design problems | ~4 weeks | Free |
+| [07 - Monitoring](modules/07-monitoring-observability/) | Prometheus, Grafana, OpenTelemetry, CloudWatch, alerting | ~2 weeks | Free |
+| [08 - System Design](modules/08-system-design/) | Scalability, databases, caching, event-driven architecture | ~4 weeks | Free |
 | [09 - Interview Prep](modules/09-interview-prep/) | Behavioral questions, portfolio, resume, mock interviews | ~2 weeks | Free |
+
+### Month 6-7 — AI Skills
+
+| Module | What You'll Learn | Time | Cost |
+|--------|-------------------|------|------|
+| [10 - AI for Cloud & DevOps](modules/10-ai-for-cloud-devops/) | GitHub Copilot, Amazon Bedrock, AI-powered monitoring, prompt engineering for IaC | ~3 weeks | Free |
 
 ---
 
