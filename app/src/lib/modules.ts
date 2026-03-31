@@ -1,11 +1,9 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import { MODULE_DATA } from './module-data.generated';
 
 export interface Resource {
   title: string;
@@ -129,57 +127,13 @@ export const MODULE_CONFIGS: ModuleConfig[] = [
   },
 ];
 
-// Resolve modules directory - works both locally and on Vercel
-function getModulesDir(): string {
-  const candidates = [
-    path.resolve(process.cwd(), 'modules-content'),          // Vercel build (copied by prebuild script)
-    path.resolve(process.cwd(), '..', 'modules'),            // local dev (cwd = app/)
-    path.resolve(process.cwd(), 'modules'),                  // if cwd is repo root
-  ];
-
-  for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
-      return candidate;
-    }
-  }
-
-  // Fallback
-  return candidates[0];
-}
-
-const MODULES_DIR = getModulesDir();
-
-// Pre-load all content at module initialization so it's bundled
-const _contentCache = new Map<string, string>();
-const _quizCache = new Map<string, QuizQuestion[]>();
-
-function preloadAll() {
-  for (const mod of MODULE_CONFIGS) {
-    try {
-      const readmePath = path.join(MODULES_DIR, mod.slug, 'README.md');
-      if (fs.existsSync(readmePath)) {
-        _contentCache.set(mod.slug, fs.readFileSync(readmePath, 'utf-8'));
-      }
-    } catch { /* skip if not found */ }
-
-    try {
-      const quizPath = path.join(MODULES_DIR, mod.slug, 'tests', 'quiz.json');
-      if (fs.existsSync(quizPath)) {
-        _quizCache.set(mod.slug, JSON.parse(fs.readFileSync(quizPath, 'utf-8')));
-      }
-    } catch { /* skip if not found */ }
-  }
-}
-
-preloadAll();
-
 export function getModuleConfig(slug: string): ModuleConfig | undefined {
   return MODULE_CONFIGS.find(m => m.slug === slug);
 }
 
 export async function getModuleContent(slug: string): Promise<string> {
-  const markdown = _contentCache.get(slug);
-  if (!markdown) {
+  const data = MODULE_DATA[slug];
+  if (!data?.markdown) {
     return '<p>Module content not available.</p>';
   }
 
@@ -188,11 +142,12 @@ export async function getModuleContent(slug: string): Promise<string> {
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(markdown);
+    .process(data.markdown);
 
   return String(result);
 }
 
 export function getQuizQuestions(slug: string): QuizQuestion[] {
-  return _quizCache.get(slug) || [];
+  const data = MODULE_DATA[slug];
+  return (data?.quiz as QuizQuestion[]) || [];
 }
