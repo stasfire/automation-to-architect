@@ -14,7 +14,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel({
-    includeFiles: ['../modules/**/*'],
-  })
+  adapter: vercel()
 });

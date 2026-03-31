@@ -131,11 +131,10 @@ export const MODULE_CONFIGS: ModuleConfig[] = [
 
 // Resolve modules directory - works both locally and on Vercel
 function getModulesDir(): string {
-  // Try multiple paths to find the modules directory
   const candidates = [
-    path.resolve(process.cwd(), '..', 'modules'),           // local dev (cwd = app/)
+    path.resolve(process.cwd(), 'modules-content'),          // Vercel build (copied by prebuild script)
+    path.resolve(process.cwd(), '..', 'modules'),            // local dev (cwd = app/)
     path.resolve(process.cwd(), 'modules'),                  // if cwd is repo root
-    path.resolve(fileURLToPath(import.meta.url), '..', '..', '..', '..', '..', 'modules'), // relative to this file
   ];
 
   for (const candidate of candidates) {

@@ -7,7 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "cp -r ../modules ./modules-content",
     "build": "astro build",
+    "postbuild": "rm -rf ./modules-content",
     "preview": "astro preview",
     "astro": "astro"
   },
